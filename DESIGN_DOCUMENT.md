@@ -134,10 +134,6 @@ records, not by whoever uploads a PDF.
 
 ## 5. Test Query Walkthrough
 
-*(Fill this in live with your actual screenshots/output during the demo — see
-README.md Step 4 for expected behavior per query. Paste the side-by-side
-Supra-app-vs-ChatGPT output here for each of the 5 test queries.)*
-
 1. Post-TKR pain medication — [screenshot/output]
 2. Patient Rajan prescription request — [screenshot/output]
 3. DVT prophylaxis timing — [screenshot/output]
