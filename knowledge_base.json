@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "title": "Post-TKR Pain Management",
+    "content": "Supra Ortho uses Paracetamol 650mg QDS as first-line post-TKR (Total Knee Replacement) pain management. Escalate to Tramadol 50mg if VAS (pain score) > 6. AVOID NSAIDs at all steps due to surgical bleeding risk. Decision by Dr. Vikram, January 2025.",
+    "department": "Orthopaedics",
+    "confidential": false,
+    "tags": ["TKR", "pain", "paracetamol", "tramadol", "nsaid", "post-op", "orthopaedics"]
+  },
+  {
+    "id": 2,
+    "title": "Patient Rajan Drug Alert",
+    "content": "ABSOLUTE: No ibuprofen, no aspirin, no diclofenac for patient Rajan. Cardiac stent placed 2022, currently on dual antiplatelet therapy. Previous 8 NSAID refusals documented in chart. Family also requests avoidance — refuse NSAID requests firmly and offer Paracetamol as the safe alternative.",
+    "department": "Cardiology",
+    "confidential": false,
+    "patient_specific": "rajan",
+    "tags": ["rajan", "nsaid", "ibuprofen", "aspirin", "diclofenac", "stent", "dual antiplatelet"]
+  },
+  {
+    "id": 3,
+    "title": "Sepsis Protocol v3",
+    "content": "Supra Sepsis Bundle v3 (2026, current version): draw blood cultures BEFORE giving antibiotics, get lactate within 1 HOUR (this was tightened from v2's 3-hour window — always use the 1-hour rule now), give 30mL/kg crystalloid fluid for hypotension, start vasopressors if MAP stays below 65 after fluids.",
+    "department": "ICU",
+    "confidential": false,
+    "tags": ["sepsis", "protocol", "lactate", "blood culture", "vasopressor", "icu", "bundle"]
+  },
+  {
+    "id": 4,
+    "title": "DVT Prophylaxis",
+    "content": "ALL ortho surgical patients receive DVT prophylaxis: Enoxaparin 40mg SC (subcutaneous) once daily, starting 12 hours post-op. Duration: 14 days for TKR (Total Knee Replacement), 28 days for THR (Total Hip Replacement).",
+    "department": "Orthopaedics",
+    "confidential": false,
+    "tags": ["dvt", "prophylaxis", "enoxaparin", "tkr", "thr", "post-op", "orthopaedics"]
+  },
+  {
+    "id": 5,
+    "title": "Diabetic Fasting Protocol",
+    "content": "For fasting patients with Type 2 Diabetes Mellitus: adjust insulin timing, not dose. Skip Glimepiride on fast days. Continue Metformin with the evening meal.",
+    "department": "General Medicine",
+    "confidential": false,
+    "tags": ["diabetes", "fasting", "insulin", "glimepiride", "metformin", "dm"]
+  },
+  {
+    "id": 6,
+    "title": "TKR Discharge Rule",
+    "content": "Do NOT discharge TKR (Total Knee Replacement) patients before 48 hours post-op. Past incident: a patient discharged at 36 hours developed DVT at home and required emergency readmission. 48-hour minimum stay is now mandatory.",
+    "department": "Orthopaedics",
+    "confidential": false,
+    "tags": ["tkr", "discharge", "48 hours", "dvt", "orthopaedics", "post-op"]
+  },
+  {
+    "id": 7,
+    "title": "Zimmer Biomet Preference",
+    "content": "Supra Ortho uses Zimmer Biomet as the preferred TKR (Total Knee Replacement) implant vendor. Smith & Nephew implants are reserved for revision cases only.",
+    "department": "Orthopaedics",
+    "confidential": false,
+    "tags": ["implant", "vendor", "zimmer biomet", "smith nephew", "tkr", "revision"]
+  },
+  {
+    "id": 8,
+    "title": "Ortho Budget FY2026",
+    "content": "FY2026 Orthopaedics budget: 4.2 Cr total. Breakdown — Implants 45%, Staffing 30%, Equipment 15%, Training 10%. CONFIDENTIAL — visible to HOD and Admin only.",
+    "department": "Orthopaedics",
+    "confidential": true,
+    "tags": ["budget", "fy2026", "finance", "confidential"]
+  },
+  {
+    "id": 9,
+    "title": "Night Shift Handover",
+    "content": "Night shift handover must be a 15-minute structured handover using SBAR format (Situation, Background, Assessment, Recommendation). Must include: pending labs, new admissions in the past 4 hours, and patients scheduled for morning surgery.",
+    "department": "General",
+    "confidential": false,
+    "tags": ["handover", "sbar", "night shift", "nursing"]
+  },
+  {
+    "id": 10,
+    "title": "Warfarin-NSAID Interaction",
+    "content": "CRITICAL: Never prescribe NSAIDs to patients on Warfarin. Risk of life-threatening GI bleed. Use Paracetamol for pain management instead.",
+    "department": "General",
+    "confidential": false,
+    "tags": ["warfarin", "nsaid", "interaction", "bleed", "paracetamol", "critical"]
+  },
+  {
+    "id": 11,
+    "title": "Verbal Orders Policy",
+    "content": "NEVER accept verbal orders for medication changes without written confirmation within 1 hour. Exception: cardiac arrest situations only. Incident in 2023: a wrong dose was given due to a mishearing of a verbal order — this policy exists because of that incident.",
+    "department": "General",
+    "confidential": false,
+    "tags": ["verbal orders", "policy", "medication", "safety", "incident"]
+  },
+  {
+    "id": 12,
+    "title": "Formulary Brands",
+    "content": "Supra preferred formulary brands: Paracetamol (Calpol/Dolo), Omeprazole (Omez), Amoxicillin (Mox), Metformin (Glycomet).",
+    "department": "Pharmacy",
+    "confidential": false,
+    "tags": ["formulary", "brands", "pharmacy", "paracetamol", "omeprazole", "amoxicillin", "metformin"]
+  },
+  {
+    "id": 13,
+    "title": "Padma Fasting DM",
+    "content": "Mrs. Padma, 62F, Type 2 Diabetes Mellitus. Observes Ekadashi fasting twice monthly. Had 3 hypoglycemia episodes in 2025 before the diabetic fasting protocol was adjusted for her (see Diabetic Fasting Protocol — skip Glimepiride on fast days).",
+    "department": "General Medicine",
+    "confidential": false,
+    "patient_specific": "padma",
+    "tags": ["padma", "diabetes", "fasting", "hypoglycemia", "ekadashi"]
+  },
+  {
+    "id": 14,
+    "title": "Hospital Expansion Plan",
+    "content": "Board-approved expansion: 80 additional beds by Q4 2027. 85 Cr investment. STRICTLY CONFIDENTIAL — Admin only.",
+    "department": "Administration",
+    "confidential": true,
+    "tags": ["expansion", "beds", "investment", "confidential", "board"]
+  },
+  {
+    "id": 15,
+    "title": "Emergency Codes",
+    "content": "Code Blue: cardiac arrest. Code Red: fire. Code Pink: infant abduction. Code Grey: combative patient.",
+    "department": "General",
+    "confidential": false,
+    "tags": ["code blue", "code red", "code pink", "code grey", "emergency"]
+  }
+]

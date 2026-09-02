@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Supra Hospital AI Assistant</title>
+<style>
+  :root {
+    --primary: #0f6e5c;
+    --primary-dark: #0a4f42;
+    --bg: #f4f7f6;
+    --card: #ffffff;
+    --danger: #b3261e;
+    --danger-bg: #fdecea;
+    --muted: #667085;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: #1d2939;
+  }
+  header {
+    background: var(--primary-dark);
+    color: white;
+    padding: 16px 24px;
+  }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; font-size: 13px; opacity: 0.85; }
+  .container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 16px;
+  }
+  .controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  select, input[type=text] {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d0d5dd;
+    font-size: 14px;
+  }
+  select { width: 160px; }
+  #chat {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid #e4e7ec;
+    min-height: 320px;
+    max-height: 55vh;
+    overflow-y: auto;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .msg { margin-bottom: 16px; }
+  .msg .role { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .msg.user .bubble {
+    background: #eef2f6; display: inline-block; padding: 10px 14px;
+    border-radius: 10px; max-width: 80%;
+  }
+  .msg.ai .bubble {
+    background: #f0f8f5; border: 1px solid #d3ece4; padding: 12px 14px;
+    border-radius: 10px; white-space: pre-wrap; line-height: 1.5;
+  }
+  .msg.ai.alert .bubble {
+    background: var(--danger-bg); border-color: #f2b8b5;
+  }
+  .sources {
+    margin-top: 8px; font-size: 12px; color: var(--muted);
+  }
+  .chip {
+    display: inline-block; background: #e7f3f0; color: var(--primary-dark);
+    padding: 3px 8px; border-radius: 999px; margin: 2px 4px 0 0; font-size: 11px;
+  }
+  .meta { font-size: 11px; color: #98a2b3; margin-top: 4px; }
+  form { display: flex; gap: 10px; }
+  input[type=text]#query { flex: 1; }
+  button {
+    background: var(--primary); color: white; border: none;
+    padding: 10px 20px; border-radius: 8px; font-size: 14px; cursor: pointer;
+  }
+  button:hover { background: var(--primary-dark); }
+  .examples { margin-top: 10px; font-size: 12px; color: var(--muted); }
+  .examples button {
+    background: white; color: var(--primary-dark); border: 1px solid #d0d5dd;
+    font-size: 12px; padding: 6px 10px; margin: 4px 6px 0 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏥 Supra Hospital AI Assistant</h1>
+  <p>Grounded in Supra's own protocols, drug alerts and confidentiality rules — not generic ChatGPT knowledge.</p>
+</header>
+
+<div class="container">
+  <div class="controls">
+    <label for="role">Logged in as:</label>
+    <select id="role">
+      <option>Doctor</option>
+      <option>Nurse</option>
+      <option>HOD</option>
+      <option>Admin</option>
+    </select>
+  </div>
+
+  <div id="chat"></div>
+
+  <form id="chatForm">
+    <input type="text" id="query" placeholder="Ask about a protocol, drug, or patient..." autocomplete="off" required>
+    <button type="submit">Ask</button>
+  </form>
+
+  <div class="examples">
+    Try:
+    <button type="button" class="ex">What pain medication should I give a post-TKR patient?</button>
+    <button type="button" class="ex">Patient Rajan has knee pain, what should I prescribe?</button>
+    <button type="button" class="ex">When should I start DVT prophylaxis after surgery?</button>
+    <button type="button" class="ex">What's our sepsis protocol?</button>
+    <button type="button" class="ex">Tell me about Mrs. Padma's medication management</button>
+    <button type="button" class="ex">What's the ortho budget for FY2026?</button>
+  </div>
+</div>
+
+<script>
+const chat = document.getElementById('chat');
+const form = document.getElementById('chatForm');
+const queryInput = document.getElementById('query');
+const roleSelect = document.getElementById('role');
+
+document.querySelectorAll('.ex').forEach(btn => {
+  btn.addEventListener('click', () => {
+    queryInput.value = btn.textContent;
+    form.requestSubmit();
+  });
+});
+
+function addMessage(role, text, extra) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + role + (extra && extra.alert ? ' alert' : '');
+  const roleLabel = document.createElement('div');
+  roleLabel.className = 'role';
+  roleLabel.textContent = role === 'user' ? 'You' : 'Supra AI Assistant';
+  div.appendChild(roleLabel);
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.textContent = text;
+  div.appendChild(bubble);
+
+  if (extra && extra.sources && extra.sources.length) {
+    const src = document.createElement('div');
+    src.className = 'sources';
+    src.innerHTML = 'Sources: ' + extra.sources.map(s => `<span class="chip">${s}</span>`).join('');
+    div.appendChild(src);
+  }
+  if (extra && extra.meta) {
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = extra.meta;
+    div.appendChild(meta);
+  }
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const query = queryInput.value.trim();
+  if (!query) return;
+  const role = roleSelect.value;
+  addMessage('user', query);
+  queryInput.value = '';
+
+  const loadingId = 'loading-' + Date.now();
+  addMessage('ai', 'Thinking...');
+
+  try {
+    const res = await fetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, role })
+    });
+    const data = await res.json();
+    chat.removeChild(chat.lastChild); // remove "Thinking..."
+
+    const isAlert = data.safety_flags && data.safety_flags.includes('PATIENT_DRUG_ALERT');
+    const metaText = `Role: ${data.role} | ${data.used_llm ? 'LLM-generated' : 'Offline retrieval mode'} | ${data.latency_sec}s`;
+    addMessage('ai', data.answer, { sources: data.sources, meta: metaText, alert: isAlert });
+  } catch (err) {
+    chat.removeChild(chat.lastChild);
+    addMessage('ai', 'Error contacting server: ' + err);
+  }
+});
+</script>
+</body>
+</html>
